@@ -1,13 +1,12 @@
 package com.udacity.asteroidradar.main
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
+import com.udacity.asteroidradar.Asteroid
 import com.udacity.asteroidradar.database.getDatabase
 import com.udacity.asteroidradar.repository.AsteroidsRepository
 import kotlinx.coroutines.launch
+import java.lang.Exception
 import java.lang.IllegalArgumentException
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
@@ -20,7 +19,23 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    val asteroids = asteroidsRepository.asteroids
+//    private val _asteroids = MutableLiveData<List<Asteroid>>()
+    val asteroids = asteroidsRepository.asteroids // LiveData<List<Asteroid>>
+//            get() = _asteroids
+
+//    val apod = asteroidsRepository.apod
+
+//    private fun getAsteroids() {
+//        viewModelScope.launch {
+//            try{
+//
+//                _asteroids.value = asteroidsRepository.refreshAsteroids()
+//
+//            }catch (exception: Exception){
+//
+//            }
+//        }
+//    }
 
     class Factory(val app: Application) : ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {

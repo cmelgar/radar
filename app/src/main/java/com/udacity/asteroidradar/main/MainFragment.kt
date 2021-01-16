@@ -6,6 +6,8 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.udacity.asteroidradar.Asteroid
 import com.udacity.asteroidradar.AsteroidClickListener
 import com.udacity.asteroidradar.AsteroidsListAdapter
@@ -15,7 +17,8 @@ import com.udacity.asteroidradar.databinding.FragmentMainBinding
 class MainFragment : Fragment() {
 
     private val viewModel: MainViewModel by lazy {
-        ViewModelProvider(this).get(MainViewModel::class.java)
+        val activity = requireNotNull(this.activity)
+        ViewModelProvider(this, MainViewModel.Factory(activity.application)).get(MainViewModel::class.java)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -25,13 +28,18 @@ class MainFragment : Fragment() {
 
         binding.viewModel = viewModel
 
-        val adapter = AsteroidsListAdapter(AsteroidClickListener { asteroid ->
+//        var adapter = AsteroidsListAdapter(AsteroidClickListener { asteroid ->
 //            val destination = Uri.parse()
-        })
+//        })
 
-        binding.asteroidRecycler.adapter = adapter
+        //binding.asteroidRecycler.adapter = adapter
 
         setHasOptionsMenu(true)
+
+        binding.root.findViewById<RecyclerView>(R.id.asteroid_recycler).apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = viewModelAdapter
+        }
 
         return binding.root
     }
