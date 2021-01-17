@@ -3,6 +3,7 @@ package com.udacity.asteroidradar.database
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.udacity.asteroidradar.Asteroid
+import com.udacity.asteroidradar.api.NetworkAsteroid
 
 @Entity
 data class DatabaseAsteroid constructor(
@@ -11,12 +12,10 @@ data class DatabaseAsteroid constructor(
     val codename: String,
     val closeApproachDate: String,
     val absolute_magnitude: Double,
-    val estimated_diameter_max: Double,
-    val relative_velocity: Double,
-    val distance_from_earth: Double,
-    val is_potentially_hazardous_asteroid: Boolean
-//    val kilometers_per_second: String,
-//    val astronomical: String
+    val estimatedDiameter: Double,
+    val relativeVelocity: Double,
+    val distanceFromEarth: Double,
+    val isPotentiallyHazardous: Boolean
 )
 
 fun List<DatabaseAsteroid>.asDomainModel(): List<Asteroid> {
@@ -26,10 +25,10 @@ fun List<DatabaseAsteroid>.asDomainModel(): List<Asteroid> {
                 codename = it.codename,
                 closeApproachDate = it.closeApproachDate,
                 absoluteMagnitude = it.absolute_magnitude,
-                estimatedDiameter = it.estimated_diameter_max,
-                relativeVelocity = it.relative_velocity,
-                distanceFromEarth = it.distance_from_earth,
-                isPotentiallyHazardous = it.is_potentially_hazardous_asteroid
+                estimatedDiameter = it.estimatedDiameter,
+                relativeVelocity = it.relativeVelocity,
+                distanceFromEarth = it.distanceFromEarth,
+                isPotentiallyHazardous = it.isPotentiallyHazardous
         )
     }
 }

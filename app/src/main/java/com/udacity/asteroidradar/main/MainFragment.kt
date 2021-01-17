@@ -1,5 +1,6 @@
 package com.udacity.asteroidradar.main
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
@@ -8,10 +9,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.udacity.asteroidradar.Asteroid
-import com.udacity.asteroidradar.AsteroidClickListener
-import com.udacity.asteroidradar.AsteroidsListAdapter
-import com.udacity.asteroidradar.R
+import com.squareup.picasso.Picasso
+import com.udacity.asteroidradar.*
 import com.udacity.asteroidradar.databinding.FragmentMainBinding
 
 class MainFragment : Fragment() {
@@ -29,10 +28,23 @@ class MainFragment : Fragment() {
         binding.viewModel = viewModel
 
 //        var adapter = AsteroidsListAdapter(AsteroidClickListener { asteroid ->
-//            val destination = Uri.parse()
+//
 //        })
 
-        //binding.asteroidRecycler.adapter = adapter
+//        binding.asteroidRecycler.adapter = adapter
+
+        Picasso.get()
+                .load("https://apod.nasa.gov/apod/image/2101/hs-2014-18_n2174rotate1024.jpg").into(binding.activityMainImageOfTheDay)
+
+        System.out.println("Hello")
+        viewModelAdapter = AsteroidsListAdapter(AsteroidClick {
+            System.out.println("Hello2")
+
+            val packageManager = context?.packageManager ?: return@AsteroidClick
+            val intent = Intent(Intent.ACTION_VIEW, null)
+
+            startActivity(intent)
+        })
 
         setHasOptionsMenu(true)
 
@@ -44,12 +56,11 @@ class MainFragment : Fragment() {
         return binding.root
     }
 
-    private val viewModelAdapter: AsteroidsListAdapter? = null
+    private var viewModelAdapter: AsteroidsListAdapter? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.asteroids.observe(viewLifecycleOwner, Observer<List<Asteroid>> {
-            asteroids ->
+        viewModel.asteroids.observe(viewLifecycleOwner, Observer<List<Asteroid>> { asteroids ->
             asteroids?.apply {
                 viewModelAdapter?.asteroids = asteroids
             }

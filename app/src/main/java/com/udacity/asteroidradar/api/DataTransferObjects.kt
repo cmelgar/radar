@@ -5,25 +5,37 @@ import com.udacity.asteroidradar.Asteroid
 import com.udacity.asteroidradar.database.DatabaseAsteroid
 
 @JsonClass(generateAdapter = true)
-data class NetworkAsteroidsContainer(val near_earth_objects: List<Asteroid>)
+data class NetworkAsteroidsContainer(val asteroids: List<Asteroid>)
+
+@JsonClass(generateAdapter = true)
+data class NetworkAsteroid(
+        val id: Long,
+        val codename: String,
+        val closeApproachDate: String,
+        val absoluteMagnitude: Double,
+        val estimatedDiameter: Double,
+        val relativeVelocity: Double,
+        val distanceFromEarth: Double,
+        val isPotentiallyHazardous: Boolean
+)
 
 fun NetworkAsteroidsContainer.asDatabaseModel(): Array<DatabaseAsteroid> {
-    return near_earth_objects.map {
+    return asteroids.map {
         DatabaseAsteroid (
                 id = it.id,
-                codename = "test",
-                closeApproachDate = "test",
-                absolute_magnitude = 0.5,
-                estimated_diameter_max = 0.9,
-                relative_velocity = 0.8,
-                distance_from_earth = 0.1,
-                is_potentially_hazardous_asteroid = true
+                codename = it.codename,
+                closeApproachDate = it.closeApproachDate,
+                absolute_magnitude = it.absoluteMagnitude,
+                estimatedDiameter = it.estimatedDiameter,
+                relativeVelocity = it.relativeVelocity,
+                distanceFromEarth = it.distanceFromEarth,
+                isPotentiallyHazardous = it.isPotentiallyHazardous
         )
     }.toTypedArray()
 }
 
 fun NetworkAsteroidsContainer.asDomainModel(): List<Asteroid> {
-    return near_earth_objects.map {
+    return asteroids.map {
         Asteroid(
             id = it.id,
             codename = it.codename,

@@ -21,6 +21,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
 //    private val _asteroids = MutableLiveData<List<Asteroid>>()
     val asteroids = asteroidsRepository.asteroids // LiveData<List<Asteroid>>
+
+    val apod = asteroidsRepository.apod
 //            get() = _asteroids
 
 //    val apod = asteroidsRepository.apod

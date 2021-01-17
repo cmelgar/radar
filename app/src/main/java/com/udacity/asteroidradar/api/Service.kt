@@ -22,7 +22,7 @@ interface NeoWsService {
 
     @GET("planetary/apod")
     suspend fun getApod(
-        @Query("api_key")api_key: String): PictureOfDay
+        @Query("api_key")api_key: String): Deferred<PictureOfDay>
 }
 //
 //private val moshi = Moshi.Builder()

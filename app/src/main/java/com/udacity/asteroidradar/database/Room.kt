@@ -7,17 +7,17 @@ import com.udacity.asteroidradar.Asteroid
 
 @Dao
 interface AsteroidDao {
-    @Query("select * from databaseasteroid")
+    @Query("select * from DatabaseAsteroid")
     fun getAsteroids(): LiveData<List<DatabaseAsteroid>>
 
-    @Query("select * from databaseasteroid where closeApproachDate='2021-01-16'")
+    @Query("select * from DatabaseAsteroid where closeApproachDate='2021-01-17'")
     fun getTodayAsteroids(): LiveData<List<DatabaseAsteroid>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg asteroids: DatabaseAsteroid)
 }
 
-@Database(entities = [DatabaseAsteroid::class], version = 1)
+@Database(entities = [DatabaseAsteroid::class], version = 2)
 abstract class AsteroidDatabase: RoomDatabase() {
     abstract val asteroidDao: AsteroidDao
 }
@@ -29,7 +29,9 @@ fun getDatabase(context: Context): AsteroidDatabase {
         if(!::INSTANCE.isInitialized) {
             INSTANCE = Room.databaseBuilder(context.applicationContext,
             AsteroidDatabase::class.java,
-            "asteroids").build()
+            "asteroids")
+                .fallbackToDestructiveMigration()
+                .build()
         }
     }
     return INSTANCE
