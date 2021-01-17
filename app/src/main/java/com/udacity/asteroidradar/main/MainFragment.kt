@@ -4,9 +4,11 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
@@ -27,23 +29,8 @@ class MainFragment : Fragment() {
 
         binding.viewModel = viewModel
 
-//        var adapter = AsteroidsListAdapter(AsteroidClickListener { asteroid ->
-//
-//        })
-
-//        binding.asteroidRecycler.adapter = adapter
-
-        Picasso.get()
-                .load("https://apod.nasa.gov/apod/image/2101/hs-2014-18_n2174rotate1024.jpg").into(binding.activityMainImageOfTheDay)
-
-        System.out.println("Hello")
         viewModelAdapter = AsteroidsListAdapter(AsteroidClick {
-            System.out.println("Hello2")
-
-            val packageManager = context?.packageManager ?: return@AsteroidClick
-            val intent = Intent(Intent.ACTION_VIEW, null)
-
-            startActivity(intent)
+            findNavController().navigate(MainFragmentDirections.actionShowDetail(it))
         })
 
         setHasOptionsMenu(true)
@@ -52,6 +39,13 @@ class MainFragment : Fragment() {
             layoutManager = LinearLayoutManager(context)
             adapter = viewModelAdapter
         }
+
+        viewModel.apod.observe(viewLifecycleOwner, Observer {
+            binding.activityMainImageOfTheDay.contentDescription = it.mediaType
+            Picasso.get()
+                .load(it.url).into(binding.activityMainImageOfTheDay)
+
+        })
 
         return binding.root
     }
@@ -73,6 +67,7 @@ class MainFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        Toast.makeText(context, item.title, Toast.LENGTH_SHORT).show()
         return true
     }
 }

@@ -22,18 +22,18 @@ interface NeoWsService {
 
     @GET("planetary/apod")
     suspend fun getApod(
-        @Query("api_key")api_key: String): Deferred<PictureOfDay>
+        @Query("api_key")api_key: String): PictureOfDay
 }
 //
-//private val moshi = Moshi.Builder()
-//        .add(KotlinJsonAdapterFactory())
-//        .build()
+private val moshi = Moshi.Builder()
+        .add(KotlinJsonAdapterFactory())
+        .build()
 
 object Network {
     private val retrofit = Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
-//            .addConverterFactory(MoshiConverterFactory.create(moshi))
             .addConverterFactory(ScalarsConverterFactory.create())
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
 
     val neows = retrofit.create(NeoWsService::class.java)
