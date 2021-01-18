@@ -40,6 +40,12 @@ class MainFragment : Fragment() {
             adapter = viewModelAdapter
         }
 
+//        binding.asteroidRecycler.adapter = viewModelAdapter
+//
+//        viewModel.asteroids.observe(viewLifecycleOwner, Observer {
+//            binding.asteroidRecycler.adapter
+//        })
+
         viewModel.apod.observe(viewLifecycleOwner, Observer {
             binding.activityMainImageOfTheDay.contentDescription = it.mediaType
             Picasso.get()
@@ -67,7 +73,11 @@ class MainFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        Toast.makeText(context, item.title, Toast.LENGTH_SHORT).show()
+        when (item.itemId) {
+            R.id.show_all_menu -> Toast.makeText(context, item.title, Toast.LENGTH_SHORT).show()
+            R.id.show_buy_menu -> Toast.makeText(context, item.title, Toast.LENGTH_SHORT).show()
+            R.id.show_rent_menu -> Toast.makeText(context, item.title, Toast.LENGTH_SHORT).show()
+        }
         return true
     }
 }

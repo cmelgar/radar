@@ -32,7 +32,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="264bcac5-9e4b-410b-a130-6a084431557a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/navEditor.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -44,15 +43,13 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/Asteroid_Radar.app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/Asteroid_Radar.app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/app/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/udacity/asteroidradar/api/Service.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/udacity/asteroidradar/api/Service.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/udacity/asteroidradar/database/Room.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/udacity/asteroidradar/database/Room.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/udacity/asteroidradar/main/MainFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/udacity/asteroidradar/main/MainFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/udacity/asteroidradar/main/MainViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/udacity/asteroidradar/main/MainViewModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/udacity/asteroidradar/repository/AsteroidsRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/udacity/asteroidradar/repository/AsteroidsRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/list_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/list_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -191,6 +188,10 @@
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
     <state x="512" y="288" width="950" height="537" key="#PSD/64.27.1856.1053@64.27.1856.1053" timestamp="1610916141616" />
+    <state x="725" y="311" width="524" height="491" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1610922644103">
+      <screen x="64" y="27" width="1856" height="1053" />
+    </state>
+    <state x="725" y="311" width="524" height="491" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/64.27.1856.1053@64.27.1856.1053" timestamp="1610922644103" />
     <state x="735" y="272" width="504" height="604" key="#com.intellij.ide.util.MemberChooser" timestamp="1610831548593">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
@@ -207,10 +208,10 @@
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
     <state width="522" height="580" key="DebuggerActiveHint/64.27.1856.1053@64.27.1856.1053" timestamp="1610814904972" />
-    <state x="735" y="311" key="FileChooserDialogImpl" timestamp="1610862237121">
+    <state x="735" y="311" key="FileChooserDialogImpl" timestamp="1610921511767">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state x="735" y="311" key="FileChooserDialogImpl/64.27.1856.1053@64.27.1856.1053" timestamp="1610862237121" />
+    <state x="735" y="311" key="FileChooserDialogImpl/64.27.1856.1053@64.27.1856.1053" timestamp="1610921511767" />
     <state width="1802" height="266" key="GridCell.Tab.0.bottom" timestamp="1610919391797">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
@@ -247,29 +248,13 @@
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
     <state x="458" y="188" width="1067" height="737" key="SettingsEditor/64.27.1856.1053@64.27.1856.1053" timestamp="1610916252543" />
-    <state x="648" y="241" width="1017" height="652" key="find.popup" timestamp="1610920724046">
+    <state x="648" y="241" width="1017" height="652" key="find.popup" timestamp="1610921770065">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state x="648" y="241" width="1017" height="652" key="find.popup/64.27.1856.1053@64.27.1856.1053" timestamp="1610920724046" />
+    <state x="648" y="241" width="1017" height="652" key="find.popup/64.27.1856.1053@64.27.1856.1053" timestamp="1610921770065" />
     <state x="635" y="259" width="712" height="678" key="search.everywhere.popup" timestamp="1610831779276">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
     <state x="635" y="259" width="712" height="678" key="search.everywhere.popup/64.27.1856.1053@64.27.1856.1053" timestamp="1610831779276" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/udacity/asteroidradar/main/MainFragment.kt</url>
-          <line>38</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/udacity/asteroidradar/main/MainFragment.kt</url>
-          <line>26</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
