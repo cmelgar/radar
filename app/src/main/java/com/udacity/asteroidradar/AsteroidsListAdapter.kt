@@ -9,68 +9,47 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.udacity.asteroidradar.databinding.ListItemBinding
 
-class AsteroidsListAdapter(val callback: AsteroidClick):
-        RecyclerView.Adapter<AsteroidsListAdapter.AsteroidsListViewHolder>() {
+class AsteroidsListAdapter(val clickListener: AsteroidClickListener):
+        ListAdapter<Asteroid, AsteroidsListAdapter.AsteroidsListViewHolder>(DiffCallback) {
 
-    var asteroids: List<Asteroid> = emptyList()
-        set(value) {
-            field = value
-
-            notifyDataSetChanged()
+    companion object DiffCallback: DiffUtil.ItemCallback<Asteroid>() {
+        override fun areItemsTheSame(oldItem: Asteroid, newItem: Asteroid): Boolean {
+            return oldItem == newItem
         }
 
-    class AsteroidsListViewHolder(val binding: ListItemBinding):
+        override fun areContentsTheSame(oldItem: Asteroid, newItem: Asteroid): Boolean {
+            return oldItem == newItem
+        }
+    }
+
+    class AsteroidsListViewHolder(private var binding: ListItemBinding):
             RecyclerView.ViewHolder(binding.root) {
-                companion object {
-                    @LayoutRes
-                    val LAYOUT = R.layout.list_item
-                }
-//        fun bind(listener: AsteroidClickListener, asteroid: Asteroid) {
-//            binding.asteroid = asteroid
-//            binding.clickListener = listener
-//
-//            binding.executePendingBindings()
-//        }
-//
-//        companion object{
-//            fun from(parent: ViewGroup): AsteroidsListViewHolder {
-//                val layoutInflater = LayoutInflater.from(parent.context)
-//                val binding = ListItemBinding.inflate(layoutInflater, parent, false)
-//                return AsteroidsListViewHolder(binding)
-//            }
-//        }
+
+        fun bind(listener: AsteroidClickListener, asteroid: Asteroid) {
+            binding.asteroid = asteroid
+            binding.asteroidCallback = listener
+
+            binding.executePendingBindings()
+        }
+
+        companion object{
+            fun from(parent: ViewGroup): AsteroidsListViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val binding = ListItemBinding.inflate(layoutInflater, parent, false)
+                return AsteroidsListViewHolder(binding)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AsteroidsListViewHolder {
-        //return AsteroidsListViewHolder.from(parent)
-        val withDataBinding: ListItemBinding = DataBindingUtil.inflate(
-                LayoutInflater.from(parent.context),
-                AsteroidsListViewHolder.LAYOUT,
-                parent,
-                false)
-
-        return AsteroidsListViewHolder(withDataBinding)
+        return AsteroidsListViewHolder.from(parent)
     }
 
     override fun onBindViewHolder(holder: AsteroidsListViewHolder, position: Int) {
-        holder.binding.also {
-            it.asteroid = asteroids[position]
-            it.asteroidCallback = callback
-        }
+        holder.bind(clickListener, getItem(position))
     }
-
-    override fun getItemCount() = asteroids.size
 }
 
 class AsteroidClickListener(val clickListener: (asteroid: Asteroid) -> Unit) {
     fun onClick(asteroid: Asteroid) = clickListener(asteroid)
-}
-
-class AsteroidClick(val block: (Asteroid) -> Unit) {
-    /**
-     * Called when a video is clicked
-     *
-     * @param video the video that was clicked
-     */
-    fun onClick(asteroid: Asteroid) = block(asteroid)
 }

@@ -10,9 +10,12 @@ import com.udacity.asteroidradar.database.asDomainModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
+import java.io.IOException
+import java.lang.Exception
 
 class AsteroidsRepository (private val database: AsteroidDatabase) {
-    val asteroids: LiveData<List<Asteroid>> = Transformations.map(database.asteroidDao.getTodayAsteroids()) {
+    val asteroids: LiveData<List<Asteroid>> = Transformations.map(database.asteroidDao.getTodayAsteroids(
+        getToday())) {
         it.asDomainModel()
     }
 
@@ -20,23 +23,34 @@ class AsteroidsRepository (private val database: AsteroidDatabase) {
         it.asDomainModel()
     }
 
-    val asteroidsWeek: LiveData<List<Asteroid>> = Transformations.map(database.asteroidDao.getWeekAsteroids()) {
+    val asteroidsWeek: LiveData<List<Asteroid>> = Transformations.map(database.asteroidDao.getWeekAsteroids(
+        getToday(), getSeventhDay()
+    )) {
         it.asDomainModel()
     }
 
     suspend fun refreshAsteroids(app_key: String) {
         withContext(Dispatchers.IO) {
-            val result = Network.neows.getAsteroids("2021-01-17",
-                "2021-01-24",
-                app_key)
-            val jsonAsteroid = JSONObject(result)
-            val asteroidsList = parseAsteroidsJsonResult(jsonAsteroid).toList()
+            try {
+                val result = Network.neows.getAsteroids(
+                    getToday(),
+                    getSeventhDay(),
+                    app_key)
+                val jsonAsteroid = JSONObject(result)
+                val asteroidsList = parseAsteroidsJsonResult(jsonAsteroid).toList()
 
-            database.asteroidDao.insertAll(*NetworkAsteroidsContainer(asteroidsList).asDatabaseModel())
+                database.asteroidDao.insertAll(*NetworkAsteroidsContainer(asteroidsList).asDatabaseModel())
+            }catch (e: Exception) {
+
+            }
         }
     }
 
     suspend fun getApod(app_key: String): PictureOfDay {
-        return Network.neows.getApod(app_key)
+           return Network.neows.getApod(app_key)
+    }
+
+    suspend fun deletePastAsteroids(yesterday: String) {
+        database.asteroidDao.deletePreviousAsteroids(yesterday)
     }
 }

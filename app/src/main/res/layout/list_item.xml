@@ -12,7 +12,7 @@
 
         <variable
             name="asteroidCallback"
-            type="com.udacity.asteroidradar.AsteroidClick" />
+            type="com.udacity.asteroidradar.AsteroidClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

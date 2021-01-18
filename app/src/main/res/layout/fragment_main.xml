@@ -30,6 +30,7 @@
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
+                app:setImageUrl="@{viewModel.status}"
                 app:srcCompat="@drawable/placeholder_picture_of_day"/>
 
             <TextView
@@ -56,8 +57,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/activity_main_image_of_the_day_layout"
             app:layout_constraintVertical_bias="0.0"
-            tools:listitem="@layout/list_item"/>
 
+            tools:listitem="@layout/list_item"/>
+<!--        app:listData="@{viewModel.asteroids}"-->
         <ProgressBar
             android:id="@+id/status_loading_wheel"
             android:layout_width="wrap_content"
@@ -67,6 +69,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:statusData="@{viewModel.status}" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
