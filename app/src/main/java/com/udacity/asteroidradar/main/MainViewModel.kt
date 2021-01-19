@@ -10,7 +10,6 @@ import com.udacity.asteroidradar.api.getToday
 import com.udacity.asteroidradar.database.asDomainModel
 import com.udacity.asteroidradar.database.getDatabase
 import com.udacity.asteroidradar.repository.AsteroidsRepository
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.io.IOException
 import java.lang.IllegalArgumentException

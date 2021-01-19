@@ -16,10 +16,11 @@ class MainFragment : Fragment() {
         val activity = requireNotNull(this.activity)
         ViewModelProvider(this, MainViewModel.Factory(activity.application)).get(MainViewModel::class.java)
     }
+    lateinit var binding: FragmentMainBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val binding = FragmentMainBinding.inflate(inflater)
+        binding = FragmentMainBinding.inflate(inflater)
 
         binding.setLifecycleOwner(this)
         //binding.lifecycleOwner = this
@@ -62,11 +63,9 @@ class MainFragment : Fragment() {
             R.id.show_saved_asteroids -> viewModel.showOptionSelected(OptionSelected.SAVED)
             R.id.show_today_asteroids -> viewModel.showOptionSelected(OptionSelected.TODAY)
         }
-//        viewModel.asteroids.observe(viewLifecycleOwner, Observer {
-//            it?.apply {
-//                adapter.submitList(it)
-//            }
-//        })
+        viewModel.asteroids.observe(viewLifecycleOwner, Observer {
+            bindRecyclerView(binding.asteroidRecycler, it)
+        })
         return true
     }
 }
