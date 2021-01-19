@@ -20,7 +20,9 @@ class MainFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val binding = FragmentMainBinding.inflate(inflater)
-        binding.lifecycleOwner = this
+
+        binding.setLifecycleOwner(this)
+        //binding.lifecycleOwner = this
 
         binding.viewModel = viewModel
 
@@ -30,16 +32,15 @@ class MainFragment : Fragment() {
 
         binding.asteroidRecycler.adapter = adapter
 
-        viewModel.asteroids.observe(viewLifecycleOwner, Observer {
-            it?.apply {
-                adapter.submitList(it)
-            }
-        })
+//        viewModel.asteroids.observe(viewLifecycleOwner, Observer {
+//            it?.apply {
+//                adapter.submitList(it)
+//            }
+//        })
 
         setHasOptionsMenu(true)
 
         viewModel.apod.observe(viewLifecycleOwner, Observer {
-            System.out.println("Hello")
             it?.apply {
                 binding.activityMainImageOfTheDay.contentDescription = it.mediaType
                 Picasso.get()
@@ -61,6 +62,11 @@ class MainFragment : Fragment() {
             R.id.show_saved_asteroids -> viewModel.showOptionSelected(OptionSelected.SAVED)
             R.id.show_today_asteroids -> viewModel.showOptionSelected(OptionSelected.TODAY)
         }
+//        viewModel.asteroids.observe(viewLifecycleOwner, Observer {
+//            it?.apply {
+//                adapter.submitList(it)
+//            }
+//        })
         return true
     }
 }

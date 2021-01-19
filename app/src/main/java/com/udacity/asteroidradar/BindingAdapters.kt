@@ -10,13 +10,13 @@ import com.squareup.picasso.Picasso
 import com.udacity.asteroidradar.main.NasaApiStatus
 
 //
-//@BindingAdapter("listData")
-//fun bindRecyclerView(recyclerView: RecyclerView, data: List<Asteroid>) {
-//    val adapter = recyclerView.adapter as AsteroidsListAdapter
-//    adapter.submitList(data) {
-//        recyclerView.scrollToPosition(0)
-//    }
-//}
+@BindingAdapter("listData")
+fun bindRecyclerView(recyclerView: RecyclerView, data: List<Asteroid>?) {
+    val adapter = recyclerView.adapter as AsteroidsListAdapter
+    adapter.submitList(data) {
+        recyclerView.scrollToPosition(0)
+    }
+}
 
 @BindingAdapter("setImageUrl")
 fun bindImage(imageView: ImageView, status: NasaApiStatus?) {

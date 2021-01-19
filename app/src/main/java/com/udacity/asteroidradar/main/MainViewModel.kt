@@ -5,11 +5,14 @@ import androidx.lifecycle.*
 import com.udacity.asteroidradar.Asteroid
 import com.udacity.asteroidradar.PictureOfDay
 import com.udacity.asteroidradar.R
+import com.udacity.asteroidradar.api.getSeventhDay
+import com.udacity.asteroidradar.api.getToday
+import com.udacity.asteroidradar.database.asDomainModel
 import com.udacity.asteroidradar.database.getDatabase
 import com.udacity.asteroidradar.repository.AsteroidsRepository
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.io.IOException
-import java.lang.Exception
 import java.lang.IllegalArgumentException
 
 enum class NasaApiStatus { LOADING, ERROR, DONE }
@@ -30,8 +33,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     private val _asteroids = MutableLiveData<List<Asteroid>>()
     lateinit var asteroids: LiveData<List<Asteroid>>
-
-
 
     init {
         _status.value = NasaApiStatus.LOADING
@@ -63,7 +64,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 asteroidsRepository.asteroidsSaved
             }
             OptionSelected.WEEK -> {
-                asteroidsRepository.asteroidsWeek
+                //asteroidsRepository.asteroidsWeek
+                Transformations.map(database.asteroidDao.getWeekAsteroids(
+                    getToday(), getSeventhDay()
+                )) {
+                    it.asDomainModel()
+                }
             }
             else -> {
                 asteroidsRepository.asteroids
