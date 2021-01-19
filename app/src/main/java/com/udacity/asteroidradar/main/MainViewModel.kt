@@ -26,18 +26,23 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val status: LiveData<NasaApiStatus>
         get() = _status
 
-    private val _onOptionChanged = MutableLiveData<Int>()
-    val onOptionChanged: LiveData<Int>
+    private val _onOptionChanged = MutableLiveData<OptionSelected>()
+    val onOptionChanged: LiveData<OptionSelected>
         get() = _onOptionChanged
 
-    private val _asteroids = MutableLiveData<List<Asteroid>>()
-    lateinit var asteroids: LiveData<List<Asteroid>>
+    val asteroids = Transformations.switchMap(_onOptionChanged) { option ->
+        when (option) {
+            OptionSelected.TODAY -> asteroidsRepository.asteroids
+            OptionSelected.WEEK -> asteroidsRepository.asteroidsWeek
+            OptionSelected.SAVED -> asteroidsRepository.asteroidsSaved
+        }
+    }
 
     init {
         _status.value = NasaApiStatus.LOADING
         getPictureOfDay()
         viewModelScope.launch {
-            onQueryChanged()
+            showOptionSelected(OptionSelected.TODAY)
             asteroidsRepository.refreshAsteroids(keyValue)
             _status.value = NasaApiStatus.DONE
         }
@@ -48,32 +53,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val apod: LiveData<PictureOfDay>
         get() = _apod
 
-    private fun onQueryChanged() {
-        try {
-            asteroids = asteroidsRepository.asteroids
-        }catch (e: IOException) {
-
-        }
-    }
-
     fun showOptionSelected(optionSelected: OptionSelected) {
-
-        asteroids = when (optionSelected) {
-            OptionSelected.SAVED -> {
-                asteroidsRepository.asteroidsSaved
-            }
-            OptionSelected.WEEK -> {
-                //asteroidsRepository.asteroidsWeek
-                Transformations.map(database.asteroidDao.getWeekAsteroids(
-                    getToday(), getSeventhDay()
-                )) {
-                    it.asDomainModel()
-                }
-            }
-            else -> {
-                asteroidsRepository.asteroids
-            }
-        }
+        _onOptionChanged.value = optionSelected
     }
 
     private fun getPictureOfDay() {

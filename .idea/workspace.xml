@@ -43,8 +43,10 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/udacity/asteroidradar/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/udacity/asteroidradar/MainActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/udacity/asteroidradar/main/MainFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/udacity/asteroidradar/main/MainFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/udacity/asteroidradar/main/MainViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/udacity/asteroidradar/main/MainViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/udacity/asteroidradar/repository/AsteroidsRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/udacity/asteroidradar/repository/AsteroidsRepository.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +79,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="VirtualDevicePath@/home/carlos/.android/avd/Pixel_XL_API_30.avd" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-01-19T00:11:12.555888Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-01-19T15:02:11.197450Z" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
@@ -194,10 +196,10 @@
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
     <state x="750" y="289" key="#xdebugger.evaluate/64.27.1856.1053@64.27.1856.1053" timestamp="1610940752657" />
-    <state x="164" y="127" width="1656" height="853" key="AVDManager" timestamp="1610861053929">
+    <state x="164" y="127" width="1656" height="853" key="AVDManager" timestamp="1611061683948">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state x="164" y="127" width="1656" height="853" key="AVDManager/64.27.1856.1053@64.27.1856.1053" timestamp="1610861053929" />
+    <state x="164" y="127" width="1656" height="853" key="AVDManager/64.27.1856.1053@64.27.1856.1053" timestamp="1611061683948" />
     <state x="575" y="311" width="824" height="491" key="AndroidCreateResourceFileDialog" timestamp="1610914387517">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
@@ -206,26 +208,26 @@
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
     <state width="522" height="580" key="DebuggerActiveHint/64.27.1856.1053@64.27.1856.1053" timestamp="1611014967613" />
-    <state x="735" y="311" key="FileChooserDialogImpl" timestamp="1611013775485">
+    <state x="735" y="311" key="FileChooserDialogImpl" timestamp="1611063895399">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state x="735" y="311" key="FileChooserDialogImpl/64.27.1856.1053@64.27.1856.1053" timestamp="1611013775485" />
-    <state width="1802" height="270" key="GridCell.Tab.0.bottom" timestamp="1611020235889">
+    <state x="735" y="311" key="FileChooserDialogImpl/64.27.1856.1053@64.27.1856.1053" timestamp="1611063895399" />
+    <state width="1802" height="318" key="GridCell.Tab.0.bottom" timestamp="1611069998636">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state width="1802" height="270" key="GridCell.Tab.0.bottom/64.27.1856.1053@64.27.1856.1053" timestamp="1611020235889" />
-    <state width="1802" height="270" key="GridCell.Tab.0.center" timestamp="1611020235889">
+    <state width="1802" height="318" key="GridCell.Tab.0.bottom/64.27.1856.1053@64.27.1856.1053" timestamp="1611069998636" />
+    <state width="1802" height="318" key="GridCell.Tab.0.center" timestamp="1611069998633">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state width="1802" height="270" key="GridCell.Tab.0.center/64.27.1856.1053@64.27.1856.1053" timestamp="1611020235889" />
-    <state width="1802" height="270" key="GridCell.Tab.0.left" timestamp="1611020235889">
+    <state width="1802" height="318" key="GridCell.Tab.0.center/64.27.1856.1053@64.27.1856.1053" timestamp="1611069998633" />
+    <state width="1802" height="318" key="GridCell.Tab.0.left" timestamp="1611069998631">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state width="1802" height="270" key="GridCell.Tab.0.left/64.27.1856.1053@64.27.1856.1053" timestamp="1611020235889" />
-    <state width="1802" height="270" key="GridCell.Tab.0.right" timestamp="1611020235889">
+    <state width="1802" height="318" key="GridCell.Tab.0.left/64.27.1856.1053@64.27.1856.1053" timestamp="1611069998631" />
+    <state width="1802" height="318" key="GridCell.Tab.0.right" timestamp="1611069998635">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state width="1802" height="270" key="GridCell.Tab.0.right/64.27.1856.1053@64.27.1856.1053" timestamp="1611020235889" />
+    <state width="1802" height="318" key="GridCell.Tab.0.right/64.27.1856.1053@64.27.1856.1053" timestamp="1611069998635" />
     <state width="1802" height="270" key="GridCell.Tab.1.bottom" timestamp="1611020235890">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
@@ -246,24 +248,13 @@
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
     <state x="458" y="188" width="1067" height="737" key="SettingsEditor/64.27.1856.1053@64.27.1856.1053" timestamp="1610916252543" />
-    <state x="648" y="241" width="1017" height="652" key="find.popup" timestamp="1611020018478">
+    <state x="648" y="241" width="1027" height="652" key="find.popup" timestamp="1611072497886">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state x="648" y="241" width="1017" height="652" key="find.popup/64.27.1856.1053@64.27.1856.1053" timestamp="1611020018478" />
-    <state x="635" y="259" width="712" height="678" key="search.everywhere.popup" timestamp="1610831779276">
+    <state x="648" y="241" width="1027" height="652" key="find.popup/64.27.1856.1053@64.27.1856.1053" timestamp="1611072497886" />
+    <state x="635" y="259" width="712" height="678" key="search.everywhere.popup" timestamp="1611066058145">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state x="635" y="259" width="712" height="678" key="search.everywhere.popup/64.27.1856.1053@64.27.1856.1053" timestamp="1610831779276" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/udacity/asteroidradar/main/MainViewModel.kt</url>
-          <line>60</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <state x="635" y="259" width="712" height="678" key="search.everywhere.popup/64.27.1856.1053@64.27.1856.1053" timestamp="1611066058145" />
   </component>
 </project>

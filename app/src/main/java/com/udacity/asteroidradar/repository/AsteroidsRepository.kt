@@ -50,7 +50,7 @@ class AsteroidsRepository (private val database: AsteroidDatabase) {
            return Network.neows.getApod(app_key)
     }
 
-    suspend fun deletePastAsteroids(yesterday: String) {
+    fun deletePastAsteroids(yesterday: String) {
         database.asteroidDao.deletePreviousAsteroids(yesterday)
     }
 }

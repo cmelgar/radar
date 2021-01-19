@@ -33,11 +33,11 @@ class MainFragment : Fragment() {
 
         binding.asteroidRecycler.adapter = adapter
 
-//        viewModel.asteroids.observe(viewLifecycleOwner, Observer {
-//            it?.apply {
-//                adapter.submitList(it)
-//            }
-//        })
+        viewModel.asteroids.observe(viewLifecycleOwner, Observer {
+            it?.apply {
+                adapter.submitList(it)
+            }
+        })
 
         setHasOptionsMenu(true)
 
@@ -59,13 +59,16 @@ class MainFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.show_week_asteroids -> viewModel.showOptionSelected(OptionSelected.WEEK)
-            R.id.show_saved_asteroids -> viewModel.showOptionSelected(OptionSelected.SAVED)
-            R.id.show_today_asteroids -> viewModel.showOptionSelected(OptionSelected.TODAY)
+            R.id.show_week_asteroids -> {
+                viewModel.showOptionSelected(OptionSelected.WEEK)
+            }
+            R.id.show_saved_asteroids -> {
+                viewModel.showOptionSelected(OptionSelected.SAVED)
+            }
+            R.id.show_today_asteroids -> {
+                viewModel.showOptionSelected(OptionSelected.TODAY)
+            }
         }
-        viewModel.asteroids.observe(viewLifecycleOwner, Observer {
-            bindRecyclerView(binding.asteroidRecycler, it)
-        })
         return true
     }
 }
